@@ -23,6 +23,9 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 # Application definition
 
+ALLOWED_HOSTS = ['website-test-api.herokuapp.com', 'localhost','127.0.0.1']
+
+
 INSTALLED_APPS = [
     'rest_framework',#api
     'home',
@@ -70,8 +73,12 @@ MIDDLEWARE = [
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
     #multilang
     'django.middleware.locale.LocaleMiddleware',
-]
 
+    #deploy
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 ROOT_URLCONF = 'website.urls'
 
 TEMPLATES = [
@@ -178,3 +185,6 @@ WAGTAIL_CONTENT_LANGUAGES =LANGUAGES = (
 MODELTRANSLATION_LANGUAGES=[
 'ru','uk'
 ]
+import dj_database_url
+db_from_env=dj_database_url.config()
+DATABASES['default'].update(db_from_env)
