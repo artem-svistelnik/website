@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 # Application definition
 
-ALLOWED_HOSTS = ['webssite-test-api.herokuapp.com', 'localhost','127.0.0.1']
+ALLOWED_HOSTS = ['website-test-api-v2.herokuapp.com', 'localhost','127.0.0.1']
 
 
 INSTALLED_APPS = [
